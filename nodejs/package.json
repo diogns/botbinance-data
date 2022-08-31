@@ -1,0 +1,23 @@
+{
+  "name": "binancebot-data-api",
+  "version": "1.0.0",
+  "description": "binancebot-data-api",
+  "author": "binancebot",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon code/index.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ejs": "^2.7.4",
+    "express": "^4.18.1",
+    "moment": "^2.24.0",
+    "node-binance-api": "^0.13.1" ,
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
