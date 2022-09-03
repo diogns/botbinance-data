@@ -3,24 +3,24 @@ let PairCoin = require('../../models/PairCoin/PairCoin');
 
 // GET
 async function getData(req, res) {
-    let coin = null;
-    let coinId = null;
+    let pairCoin = null;
+    let pairCoinId = null;
     let params={};
     try {
         params = req.params;
         if ("id" in params) {
-            coinId = req.params.id;
-            coin = await PairCoin.findOne({where: {id: coinId}});
+            pairCoinId = req.params.id;
+            pairCoin = await PairCoin.findOne({where: {id: pairCoinId}});
         }
 
         if (Object.keys(params).length === 0){
-            coin = await PairCoin.findAll();
+            pairCoin = await PairCoin.findAll();
         }
 
-        if(coin==null){
+        if(pairCoin==null){
             res.status(404).send({info: "Not found."});
         }else {
-            res.status(200).send(coin);
+            res.status(200).send(pairCoin);
         }
 
     } catch (e) {
@@ -31,12 +31,12 @@ async function getData(req, res) {
 
 // POST
 async function postData(req, res) {
-    let coin = null;
-    let coinBody = null;
+    let pairCoin = null;
+    let pairCoinBody = null;
     try {
-        coinBody = req.body;
-        coin = await PairCoin.create(coinBody);
-        res.status(201).send(coin);
+        pairCoinBody = req.body;
+        pairCoin = await PairCoin.create(pairCoinBody);
+        res.status(201).send(pairCoin);
     } catch (e) {
         res.status(400).send({info: e.original.message});
     }
@@ -44,16 +44,16 @@ async function postData(req, res) {
 
 // PUT
 async function putData(req, res) {
-    let coin = null;
-    let coinId = null;
-    let coinToUpdate = null;
+    let pairCoin = null;
+    let pairCoinId = null;
+    let pairCoinToUpdate = null;
     try {
-        coinId = req.params.id;
-        coin = req.body;
-        coinToUpdate = await PairCoin.findOne({where: {id: coinId}});
-        coinToUpdate.set(coin);
-        await coinToUpdate.save();
-        res.status(201).send(coinToUpdate)
+        pairCoinId = req.params.id;
+        pairCoin = req.body;
+        pairCoinToUpdate = await PairCoin.findOne({where: {id: pairCoinId}});
+        pairCoinToUpdate.set(pairCoin);
+        await pairCoinToUpdate.save();
+        res.status(201).send(pairCoinToUpdate)
     } catch (e) {
         res.status(400).send({info: e.original.message});
     }
@@ -61,16 +61,16 @@ async function putData(req, res) {
 
 // DELETE
 async function deleteData(req, res) {
-    let coin = null;
-    let coinId = null;
-    let coinToUpdate = null;
+    let pairCoin = null;
+    let pairCoinId = null;
+    let pairCoinToUpdate = null;
     try {
-        coinId = req.params.id;
-        coin = req.body;
-        coinToUpdate = await PairCoin.findOne({where: {id: coinId}});
-        coinToUpdate.set(coin);
-        await coinToUpdate.destroy();
-        res.status(202).send(coinToUpdate)
+        pairCoinId = req.params.id;
+        pairCoin = req.body;
+        pairCoinToUpdate = await PairCoin.findOne({where: {id: pairCoinId}});
+        pairCoinToUpdate.set(pairCoin);
+        await pairCoinToUpdate.destroy();
+        res.status(202).send(pairCoinToUpdate)
     } catch (e) {
         res.status(400).send({info: e.original.message});
     }

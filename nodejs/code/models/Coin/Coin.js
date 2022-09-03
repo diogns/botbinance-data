@@ -8,26 +8,26 @@ const Coin = DB.CONNECTION.define('Coin',{
         autoIncrement: true,
         primaryKey: true,
     },
+
     name: {
         type: DataTypes.STRING(50),
         allowNull: true,
         defaultValue: null,
         unique: true
-
     },
+
     abbreviation: {
         type: DataTypes.STRING(50),
         allowNull: true,
         defaultValue: null,
         unique: true
-
     },
+
     price: {
         type: DataTypes.FLOAT,
         allowNull: true,
         defaultValue: null,
         unique: false
-
     },
 
 

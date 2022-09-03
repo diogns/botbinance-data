@@ -8,6 +8,7 @@ const Account = DB.CONNECTION.define('Account',{
         autoIncrement: true,
         primaryKey: true,
     },
+
     name: {
         type: DataTypes.STRING(50),
         allowNull: true,
@@ -28,9 +29,9 @@ const Account = DB.CONNECTION.define('Account',{
         type: DataTypes.STRING(250),
         allowNull: true,
         defaultValue: null,
-        unique: true
-
+        unique: false
     },
+
 },{
     createdAt: false,
     updatedAt: false,
