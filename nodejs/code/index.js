@@ -1,3 +1,4 @@
+/* Importing the express module. */
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');

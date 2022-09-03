@@ -1,5 +1,5 @@
-/* Importing the Coin model from the models folder. */
-let Coin = require('../../models/Coin/Coin');
+/* Importing the PairCoin model from the models folder. */
+let PairCoin = require('../../models/PairCoin/PairCoin');
 
 // GET
 async function getData(req, res) {
@@ -10,11 +10,11 @@ async function getData(req, res) {
         params = req.params;
         if ("id" in params) {
             coinId = req.params.id;
-            coin = await Coin.findOne({where: {id: coinId}});
+            coin = await PairCoin.findOne({where: {id: coinId}});
         }
 
         if (Object.keys(params).length === 0){
-            coin = await Coin.findAll();
+            coin = await PairCoin.findAll();
         }
 
         if(coin==null){
@@ -35,7 +35,7 @@ async function postData(req, res) {
     let coinBody = null;
     try {
         coinBody = req.body;
-        coin = await Coin.create(coinBody);
+        coin = await PairCoin.create(coinBody);
         res.status(201).send(coin);
     } catch (e) {
         res.status(400).send({info: e.original.message});
@@ -50,7 +50,7 @@ async function putData(req, res) {
     try {
         coinId = req.params.id;
         coin = req.body;
-        coinToUpdate = await Coin.findOne({where: {id: coinId}});
+        coinToUpdate = await PairCoin.findOne({where: {id: coinId}});
         coinToUpdate.set(coin);
         await coinToUpdate.save();
         res.status(201).send(coinToUpdate)
@@ -67,7 +67,7 @@ async function deleteData(req, res) {
     try {
         coinId = req.params.id;
         coin = req.body;
-        coinToUpdate = await Coin.findOne({where: {id: coinId}});
+        coinToUpdate = await PairCoin.findOne({where: {id: coinId}});
         coinToUpdate.set(coin);
         await coinToUpdate.destroy();
         res.status(202).send(coinToUpdate)

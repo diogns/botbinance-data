@@ -1,5 +1,6 @@
+/* Importing the DataTypes object from the sequelize module. */
 const { DataTypes } = require('sequelize');
-const DB = require('../../config/postgres');
+const DB = require("../../config/postgres");
 
 const Coin = DB.CONNECTION.define('Coin',{
     id: {
@@ -45,42 +46,3 @@ Coin.sync();
 
 module.exports = Coin;
 
-/*
-*
-*
-*
-*
-const User = db.define('user', {
-    id: {type: Sql.INTEGER,
-         primaryKey:true,
-         min: 1},
-    name: {type: Sql.STRING,
-           allowNull: false,
-           min: 2,
-           max: 50
-        },
-    email: {type: Sql.STRING,
-            isEmail: true},
-    encrypted_password: {type: Sql.STRING, min: 8},
-    createdAt: Sql.DATE,
-    updatedAt: Sql.DATE
-});
-
-
-// This is an hook function
-User.beforeSave((user, options) => {
-   // Do something
-});
-
-// This is a class method
-User.classMethod = function (params) {
-    // Do something with params
-}
-
-// This is an instance method
-User.prototype.instanceMethod = function (params) {
-    // Do something with params
-}
-*
-*
-* */
